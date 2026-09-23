@@ -3,6 +3,9 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./pages/Register";
+import axios from "axios";
+
+axios.defaults.baseURL = import.meta.env.VITE_AXIOS_BASE_URL;
 
 function App() {
   return (
