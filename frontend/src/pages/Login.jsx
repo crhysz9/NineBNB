@@ -38,7 +38,15 @@ const Login = ({ user, setUser }) => {
   return (
     <section className='flex items-center'>
       <div className='mx-auto flex max-w-96 w-full flex-col items-center gap-4'>
-        <h1 className='text-3xl font-bold text-black'>Faça seu login</h1>
+
+        <div className='mx-auto flex max-w-96 w-full flex-col items-center'>
+          <img 
+            className='h-30'
+            src="./assets/logo.png" 
+            alt="Logo NineBNB" 
+          />
+          <h1 className='text-3xl font-bold text-black'>Faça seu login!</h1>
+        </div>
 
         <form className='flex w-full flex-col gap-2' onSubmit={handleSubmit}>
 

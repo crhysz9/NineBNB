@@ -41,8 +41,14 @@ const Register = ({ setUser }) => {
   return (
     <section className='flex items-center'>
       <div className='mx-auto flex max-w-96 w-full flex-col items-center gap-4'>
+        
         <div className='mx-auto flex max-w-96 w-full flex-col items-center'>
-             <h1 className='text-3xl font-bold text-black'>Bem-vindo!</h1>
+              <img 
+                className='h-30'
+                src="./assets/logo.png" 
+                alt="Logo NineBNB"
+              />
+             <h1 className='text-3xl font-bold text-black'>Seja Bem-vindo!</h1>
              <p><small>Faça seu cadastro aqui.</small></p>
         </div>
 

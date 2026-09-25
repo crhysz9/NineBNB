@@ -5,16 +5,20 @@ const Header = ({ user }) => {
     return (
         <header className='shadow-md'>
             <div className='mx-auto flex max-w-7xl items-center justify-between px-4 sm:px8 py-4'>
+
                 <Link to='/' className='flex items-center'>
+
                     <img
-                        className='h-10'
-                        src="https://cdn-icons-png.flaticon.com/512/3840/3840773.png"
+                        className='h-13'
+                        src="./assets/logo.png"
                         alt="Logo NineBNB"
                     />
                     <p className='text-2xl font-bold text-primary-400'>NineBNB</p>
+                    
                 </Link>
 
                 <Link to='/' className='hidden lg:flex items-center border border-gray-300 pr-4 pl-6 py-2 rounded-full shadow-md'>
+
                     <p className='pr-4 border-r border-r-gray-300'>Qualquer Lugar</p>
                     <p className='px-4 border-r border-r-gray-300'>Qualquer Semana</p>
                     <p className='px-4'>Hóspedes</p>
@@ -23,6 +27,7 @@ const Header = ({ user }) => {
                             <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                         </svg>
                     </div>
+
                 </Link>
 
                 <Link to={user ? 'account' : '/login'} className='flex items-center border border-gray-300 pr-4 pl-6 py-2 rounded-full shadow-md gap-2'>
