@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import axios from 'axios';
 
-const Login = () => {
+const Login = ({ user, setUser }) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [redirect, setRedirect] = useState(false);
 
   const handleSubmit = async (e) => {
 
@@ -19,7 +20,9 @@ const Login = () => {
         email, 
         password,
         });
-        console.log(userDoc);
+
+        setUser(userDoc);
+        setRedirect(true);
 
       } catch (error) {
         alert(`Erro ao logar: ${error.response.data}`)
@@ -28,8 +31,9 @@ const Login = () => {
     } else{
       alert('PREENCHA OS CAMPOS DE EMAIL E SENHA.')
     }
+  };
 
-  }
+  if(redirect || user) return <Navigate to='/'/>;
 
   return (
     <section className='flex items-center'>

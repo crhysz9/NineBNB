@@ -1,7 +1,43 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, Navigate } from 'react-router-dom'
+import axios from 'axios';
 
-const Register = () => {
+const Register = ({ setUser }) => {
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [redirect, setRedirect] = useState(false);
+
+  const heandleSubmit = async (e) => {
+
+    e.preventDefault();
+   
+    if (name && email && password) {
+      
+      try {
+
+        const { data: userDoc } = axios.create('/users/register', {
+        name,
+        email, 
+        password,
+        });
+
+        setUser(userDoc);
+        setRedirect(true);
+
+      } catch (error) {
+        alert(`Erro ao logar: ${error.response.data}`)
+      }
+
+    } else{
+      alert('PREENCHA OS CAMPOS DE NOME, EMAIL E SENHA.')
+    }
+
+  };
+
+  if (redirect) return <Navigate to='/' />;
+
   return (
     <section className='flex items-center'>
       <div className='mx-auto flex max-w-96 w-full flex-col items-center gap-4'>
@@ -10,27 +46,30 @@ const Register = () => {
              <p><small>Faça seu cadastro aqui.</small></p>
         </div>
 
-        <form className='flex w-full flex-col gap-2'>
+        <form className='flex w-full flex-col gap-2' onSubmit={heandleSubmit}>
 
 
          <input 
             type="text" 
             placeholder='Digite seu nome.' 
-            id='nomeRegisterUser' 
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             className='w-full rounded-full border border-gray-300 px-4 py-2' 
           />
 
           <input 
             type="email" 
             placeholder='Digite seu email.' 
-            id='emailRegisterUser' 
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className='w-full rounded-full border border-gray-300 px-4 py-2' 
           />
 
           <input 
             type="password" 
             placeholder='Digite sua senha.' 
-            id='senhalRegisterUser' 
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className='w-full rounded-full border border-gray-300 px-4 py-2' 
           />
 
