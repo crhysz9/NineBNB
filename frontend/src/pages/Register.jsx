@@ -13,11 +13,11 @@ const Register = ({ setUser }) => {
 
     e.preventDefault();
    
-    if (name && email && password) {
+    if (email && password && name) {
       
       try {
 
-        const { data: userDoc } = axios.create('/users/register', {
+        const { data: userDoc } = await axios.post('/users', {
         name,
         email, 
         password,
@@ -27,16 +27,15 @@ const Register = ({ setUser }) => {
         setRedirect(true);
 
       } catch (error) {
-        alert(`Erro ao logar: ${error.response.data}`)
+        alert(`Erro ao cadastrar usuário: ${error.response.data}`)
       }
 
     } else{
       alert('PREENCHA OS CAMPOS DE NOME, EMAIL E SENHA.')
     }
-
   };
 
-  if (redirect) return <Navigate to='/' />;
+  if(redirect) return <Navigate to='/'/>;
 
   return (
     <section className='flex items-center'>
