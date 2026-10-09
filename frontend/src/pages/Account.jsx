@@ -1,7 +1,8 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import AccProfile from '../components/AccProfile';
 
-const Account = () => {
+const Account = ({ user, setUser }) => {
 
     const { subpage } = useParams();
 
@@ -16,20 +17,18 @@ const Account = () => {
 
     return(
         <section className='p-8'>
-            <div className='max-w-7xl mx-auto flex flex-col gap-4 items-center'>
+            <div className='max-w-7xl mx-auto flex flex-col gap-8 items-center'>
 
                 <div className='flex gap-2'>
-                    <button className={buttonClass("profile")}>Perfil</button>
-                    <button className={buttonClass("bookings")}>Reservas</button>
-                    <button className={buttonClass("places")}>Lugares</button>
+                    <Link to='/account/profile' className={buttonClass("profile")}>Perfil</Link>
+                    <Link to='/account/bookings' className={buttonClass("bookings")}>Reservas</Link>
+                    <Link to='/account/places' className={buttonClass("places")}>Lugares</Link>
                 </div>
 
-                <div className='flex flex-col gap-2 items-center'>
-
-                    <p>Logado como Crhystian (crhystian@crhystian.com)</p>
-                    <button className='min-w-32 rounded-full bg-primary-400 text-white px-4 py-2 cursos-pointer transition'>Sair</button>
-
+                <div>   
+                    {subpage === 'profile' && <AccProfile user={user} setUser={setUser}/>}
                 </div>
+                
             </div>
         </section>
     )
