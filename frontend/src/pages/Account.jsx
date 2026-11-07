@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import AccProfile from '../components/AccProfile';
+import AccPlaces from '../components/AccPlaces';
 
 const Account = () => {
 
@@ -25,9 +26,8 @@ const Account = () => {
                     <Link to='/account/places' className={buttonClass("places")}>Lugares</Link>
                 </div>
 
-                <div>   
-                    {subpage === 'profile' && <AccProfile />}
-                </div>
+                {subpage === 'profile' && <AccProfile />}
+                {subpage === 'places' && <AccPlaces />}
                 
             </div>
         </section>
