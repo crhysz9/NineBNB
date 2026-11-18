@@ -1,6 +1,6 @@
-import React, { use, useState } from 'react'
+import React, { useState } from 'react'
 import Perks from './Perks';
-import Prices from './Prices';
+// import axios from "axios";
 
 const NewPlace = () => {
 
@@ -9,9 +9,17 @@ const NewPlace = () => {
     const [photos, setPhotos] = useState("");
     const [description, setDescription] = useState("");
     const [extras, setExtras] = useState("");
+    const [price, setPrice] = useState("");
+    const [checkin, setCheckin] = useState("");
+    const [checkout, setCheckout] = useState("");
+    const [guests, setGuests] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        // const newPlace = await axios.post('/places', {
+            
+        // })
     }
 
     return (
@@ -110,12 +118,74 @@ const NewPlace = () => {
 
             </div>
 
-            <Prices />
+            <div className='flex flex-col gap-1'>
 
-            <button 
-            className='hover:bg-primary-500 min-w-44 rounded-full bg-primary-400 text-white px-4 py-2 cursos-pointer transition text-center'>
+                <h2 className='ml-2 text-2xl font-bold'>Restrições e Preço</h2>
+
+                <div className='grid grid-cols-[repeat(auto-fit,minmax(225px,1fr))] gap-6'>
+
+                    <div className='flex flex-col gap-2'>
+                        <label htmlFor='price' className='ml-2 text-xl font-bold'>Preço</label>
+
+                        <input
+                            type="number"
+                            placeholder='R$500'
+                            className='border border-gray-300 px-4 py-2 rounded-full'
+                            value={price}
+                            id='price'
+                            onClick={(e) => setPrice(e.target.value)}
+                        />
+                    </div>
+
+                    <div className='flex flex-col gap-2'>
+                        <label htmlFor='checkin' className='ml-2 text-xl font-bold'>Checkin</label>
+
+                        <input
+                            type="text"
+                            placeholder='16:00'
+                            className='border border-gray-300 px-4 py-2 rounded-full'
+                            value={checkin}
+                            id='checkin'
+                            onClick={(e) => setCheckin(e.target.value)}
+                        />
+                    </div>
+
+                    <div className='flex flex-col gap-2'>
+                        <label htmlFor='checkout' className='ml-2 text-xl font-bold'>Checkout</label>
+
+                        <input
+                            type="text"
+                            placeholder='12:00'
+                            className='border border-gray-300 px-4 py-2 rounded-full'
+                            value={checkout}
+                            id='checkout'
+                            onClick={(e) => setCheckout(e.target.value)}
+                        />
+                    </div>
+
+                    <div className='flex flex-col gap-2'>
+                        <label htmlFor='guests' className='ml-2 text-xl font-bold'>N° Convidados</label>
+
+                        <input
+                            type="number"
+                            placeholder='6'
+                            className='border border-gray-300 px-4 py-2 rounded-full'
+                            value={guests}
+                            id='guests'
+                            onClick={(e) => setGuests(e.target.value)}
+                        />
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button
+                className='hover:bg-primary-500 min-w-44 rounded-full bg-primary-400 text-white px-4 py-2 cursos-pointer transition text-center'>
                 Salvar Informações
             </button>
+
         </form>
     )
 }
